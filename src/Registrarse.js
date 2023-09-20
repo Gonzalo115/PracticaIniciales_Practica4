@@ -2,20 +2,13 @@ import './App.css';
 import { useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+
+function Registrarse() {
 
   const [Carnet,setCarnet] = useState(0);
   const [contrasena, setContrasena] = useState("");
 
   const iniciarSesion = ()=>{
-    alert(Carnet);
-  }
-
-  const registro=async()=>{
-    window.location.href="http://localhost:3000/Registrarse";
-  }
-
-  const cosultar = ()=>{
     alert(Carnet);
   }
 
@@ -25,7 +18,7 @@ function App() {
       </div>
       <div class="card text-center">
         <div class="card-header">
-          Inicio De Seccion
+          Registrarse
         </div>
         <div className="card-body">
             <div className="input-group mb-3">
@@ -50,9 +43,7 @@ function App() {
         <div class="card-footer text-muted">
         <div class="d-grid gap-2">
           <button class="btn btn-primary" type="button" onClick={iniciarSesion}>Inicar Seccion</button>
-          <button class="btn btn-primary" type="button" onClick={registro}>Registrarse</button>
         </div>
-          <a  href="draw.io">Recuperar contraseña</a>
         </div>
       </div>
     </div>
@@ -60,4 +51,4 @@ function App() {
   );
 }
 
-export default App;
+export default Registrarse;
