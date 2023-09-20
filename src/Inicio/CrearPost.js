@@ -12,6 +12,7 @@ class CrearPost extends Component {
                         <a href='http://localhost:3000/Principal'>Home</a>
                         <a href='http://localhost:3000/CrearPost'>Crear Post</a>
                         <a href='http://localhost:3000/VerPerfiles'>Ver Perfiles</a>
+                        <a href='./'>Salir</a>
                     </div>
                 </section>
                 <section>

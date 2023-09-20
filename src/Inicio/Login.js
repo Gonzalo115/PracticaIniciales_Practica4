@@ -2,34 +2,49 @@ import React, { Component } from 'react';
 import '../App';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
+
+
+const baseUrl="http://0.0.0.0:3000/login";
+const baseUrl2="http://0.0.0.0:3000/login";
+const cookies = new Cookies();
+
 
 class Login extends Component {
 
+
+
+      /*
+      state={
+        form:{
+            carnet: '',
+            contrasenia: ''
+        }
+      }
+      handleChange=async e=>{
+        await this.setState({
+            form:{
+                ...this.state.form,
+                [e.target.name]: e.target.value
+            }
+        });
+      }
+
+
+      */
+
     render() {
-        ///const [Carnet,setCarnet] = useState(0);
-        ///const [contrasena, setContrasena] = useState("");
-        /*
 
-                            onChange={(event)=>{
-                      setContrasena(event.target.value);
-                    }}
-
-
-                                        onChange={(event)=>{
-                      setCarnet(event.target.value);
-                    }}
-
-        */
 
 
         const iniciarSesion = ()=>{
-            window.location.href="http://localhost:3000/Principal";
+            window.location.href="./Principal";
         }
 
         const registro=async()=>{
-            window.location.href="http://localhost:3000/Registrarse";
+            window.location.href="./Registrarse";
         }
 
         const cosultar = ()=>{
@@ -37,6 +52,7 @@ class Login extends Component {
         }
 
         return (
+
             <div class="container">
             <div className="App">
             </div>
@@ -48,15 +64,17 @@ class Login extends Component {
                   <div className="input-group mb-3">
                     <span className="input-group-text" id="basic-addon1">Carnet: </span>
                     <input type="number" 
-
+                     //name="carnet"
+                      //onChange={this.handleChange}
                     className="form-control" placeholder="Ingresar Carnet" aria-label="Username" aria-describedby="basic-addon1"/>
                   </div>
-                  
+                    
                   
                   <div className="input-group mb-3">
                     <span className="input-group-text" id="basic-addon1">Contraseña:  </span>
                     <input type="password" 
-
+                    //name="comtrasena"
+                    //onChange={this.handleChange}
                     className="form-control" placeholder="Ingrese La Contraseña" aria-label="Username" aria-describedby="basic-addon1"/>
                   </div>
               </div>
@@ -65,7 +83,7 @@ class Login extends Component {
                 <button class="btn btn-primary" type="button" onClick={iniciarSesion}>Inicar Sesion</button>
                 <button class="btn btn-primary" type="button" onClick={registro}>Registrarse</button>
               </div>
-                <a  href="http://localhost:3000/Consultar">Recuperar contraseña</a>
+                <a  href="./Consultar">Recuperar contraseña</a>
               </div>
             </div>
           </div>
