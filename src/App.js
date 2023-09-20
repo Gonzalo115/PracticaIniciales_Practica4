@@ -1,61 +1,30 @@
-import './App.css';
-import { useState } from "react"
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+
+import Login from './Inicio/Login';
+import Registrarse from './Inicio/Registrarse';
+import Consultar from './Inicio/Consultar';
+import Restablecer from './Inicio/Restablecer'
+import Principal from './Inicio/Principal';
+import CrearPost from './Inicio/CrearPost';
+import VerPerfiles from './Inicio/VerPerfiles';
+
+
 
 function App() {
-
-  const [Carnet,setCarnet] = useState(0);
-  const [contrasena, setContrasena] = useState("");
-
-  const iniciarSesion = ()=>{
-    alert(Carnet);
-  }
-
-  const registro=async()=>{
-    window.location.href="http://localhost:3000/Registrarse";
-  }
-
-  const cosultar = ()=>{
-    alert(Carnet);
-  }
-
+  
   return (
-    <div class="container">
-      <div className="App">
-      </div>
-      <div class="card text-center">
-        <div class="card-header">
-          Inicio De Seccion
-        </div>
-        <div className="card-body">
-            <div className="input-group mb-3">
-              <span className="input-group-text" id="basic-addon1">Carnet: </span>
-              <input type="number" 
-              onChange={(event)=>{
-                setCarnet(event.target.value);
-              }}
-              className="form-control" placeholder="Ingresar Carnet" aria-label="Username" aria-describedby="basic-addon1"/>
-            </div>
-            
-            
-            <div className="input-group mb-3">
-              <span className="input-group-text" id="basic-addon1">Contraseña:  </span>
-              <input type="password" 
-              onChange={(event)=>{
-                setContrasena(event.target.value);
-              }}
-              className="form-control" placeholder="Ingrese La Contraseña" aria-label="Username" aria-describedby="basic-addon1"/>
-            </div>
-        </div>
-        <div class="card-footer text-muted">
-        <div class="d-grid gap-2">
-          <button class="btn btn-primary" type="button" onClick={iniciarSesion}>Inicar Seccion</button>
-          <button class="btn btn-primary" type="button" onClick={registro}>Registrarse</button>
-        </div>
-          <a  href="draw.io">Recuperar contraseña</a>
-        </div>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+      <Route exact path='/' element={<Login/>}></Route>
+      <Route exact path='/registrarse' element={<Registrarse/>}></Route>
+      <Route exact path='/consultar' element={<Consultar/>}></Route>
+      <Route exact path='/restablecer' element={<Restablecer/>}></Route>
+      <Route exact path='/principal' element={<Principal/>}></Route>
+      <Route exact path='/crearPost' element={<CrearPost/>}></Route>
+      <Route exact path='/verPerfiles' element={<VerPerfiles/>}></Route>
+      </Routes>
+    </Router>
     
   );
 }
