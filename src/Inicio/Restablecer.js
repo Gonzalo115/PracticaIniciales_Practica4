@@ -7,8 +7,7 @@ class Restablecer extends Component {
 
   state={
     form:{
-        carnet: '',
-        correo: ''
+        contrasenia:''
     }
   }
 
@@ -21,8 +20,17 @@ class Restablecer extends Component {
     });
   }
 
+  cambiar_Pass = async() => {
+    var contrasenia = this.state.form.contrasenia
+
+
+  }
+
     render() {
 
+        const reestrablecer=() => {
+          this.cambiar_Pass()
+        }
 
         return (
               <header>
@@ -42,13 +50,15 @@ class Restablecer extends Component {
                   <div className="card-body">
                       <div className="input-group mb-3">
                         <span className="input-group-text" id="basic-addon1">Contraseña:  </span>
-                        <input type="password" 
+                        <input type="password"
+                        name = "contrasenia"
+                        onChange = {this.handleChange}
                         className="form-control" placeholder="Ingresar la nueva Contraseña" aria-label="Username" aria-describedby="basic-addon1"/>
                       </div>
                   </div>
                   <div class="card-footer text-muted">
                   <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button" >Restablecer</button>
+                    <button class="btn btn-primary" type="button" onClick={reestrablecer}>Restablecer</button>
                   </div>
                   </div>
                 </div>
