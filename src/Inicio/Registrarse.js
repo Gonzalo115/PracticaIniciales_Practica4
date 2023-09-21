@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import '../App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import Cookies from 'universal-cookie';
 const baseUrl = "http://localhost:3001/registro";
-const cookies = new Cookies();
-
 
 class Registrarse extends Component {
   state = {
@@ -27,41 +24,34 @@ class Registrarse extends Component {
     });
   }
 
-
-
   registrarse = async () => {
-    await axios.post(baseUrl, { correo: this.state.form.correo, 
-                                carnet: this.state.form.carnet,
-                                nombre: this.state.form.nombre,
-                                apellido: this.state.form.apellido, 
-                                password: this.state.form.contrasenia })
+    var correo = this.state.form.correo
+    var carnet = this.state.form.carnet
+    var nombre = this.state.form.nombre
+    var apellido = this.state.form.apellido
+    var password = this.state.form.contrasenia
+
+    if (correo != "" && carnet != 0 && nombre != "" && apellido != "" && password != ""){
+      await axios.post(baseUrl, { correo: correo, 
+                                  carnet: carnet,
+                                  nombre: nombre,
+                                  apellido: apellido, 
+                                  password: password })
       .then(response => {
         if (response.data != null) {
-          var respuesta = response.data; // Cambio de response[0] a response.data
-          cookies.set('correo', respuesta.usuario, { path: "/" });
-          cookies.set('carnet', respuesta.usuario, { path: "/" });
-          cookies.set('nombre', respuesta.usuario, { path: "/" });
-          cookies.set('apellido', respuesta.usuario, { path: "/" });
-          cookies.set('contrasenia', respuesta.contrasenia, { path: "/" });
-
-          alert(`Registrado ${respuesta.carnet}`);
-          window.location.href = "./";
-        } else {
-          alert('No se ha podido registrar');
-        }
+        alert('REGISTRADO EXITOSAMENTE');
+        window.location.href = "/";
+      } else {
+        alert('No se ha podido registrar');
+      }
       })
       .catch(error => {
         console.log(error);
       })
-  }
-
-  componentDidMount() {
-    if (cookies.get('carnet')) {
-      window.location.href = "./carnet";
-    }
-  }
-
-
+    }else{
+      alert("FALTAN PARAMETROS")
+    }    
+  } 
 
     render() {
 
@@ -86,28 +76,28 @@ class Registrarse extends Component {
                             <input type="mail" 
                                   name="correo"
                                   onChange={this.handleChange}
-                            className="form-control" placeholder="Ingrese Correo Electronico" aria-label="Ingrese Correo Electronico" aria-describedby="basic-addon1"/>
+                            className="form-control" placeholder="Ingrese Correo Electronico" aria-label="Ingrese Correo Electronico" aria-describedby="basic-addon1" required/>
                           </div>
                           <div className="input-group mb-3">
                             <span className="input-group-text" id="basic-addon1">Carnet: </span>
                             <input type="number" 
                                   name="carnet"
                                   onChange={this.handleChange}
-                            className="form-control" placeholder="Ingresar Carnet" aria-label="Username" aria-describedby="basic-addon1"/>
+                            className="form-control" placeholder="Ingresar Carnet" aria-label="Username" aria-describedby="basic-addon1" required/>
                           </div>
                           <div className="input-group mb-3">
                             <span className="input-group-text" id="basic-addon1">Nombres: </span>
                             <input type="text" 
                                 name="nombre"
                                 onChange={this.handleChange}
-                            className="form-control" placeholder="Ingrese su Nombres" aria-label="Username" aria-describedby="basic-addon1"/>
+                            className="form-control" placeholder="Ingrese su Nombres" aria-label="Username" aria-describedby="basic-addon1" required/>
                           </div>
                           <div className="input-group mb-3">
                             <span className="input-group-text" id="basic-addon1">Apellidos: </span>
                             <input type="text" 
                                   name="apellido"
                                   onChange={this.handleChange}
-                            className="form-control" placeholder="Ingrese su Apellidos" aria-label="Username" aria-describedby="basic-addon1"/>
+                            className="form-control" placeholder="Ingrese su Apellidos" aria-label="Username" aria-describedby="basic-addon1" required/>
                           </div>
                                   
                           <div className="input-group mb-3">
@@ -115,22 +105,18 @@ class Registrarse extends Component {
                             <input type="password" 
                                     name="contrasenia"
                                     onChange={this.handleChange}
-                            className="form-control" placeholder="Ingrese La Contraseña" aria-label="Username" aria-describedby="basic-addon1"/>
+                            className="form-control" placeholder="Ingrese La Contraseña" aria-label="Username" aria-describedby="basic-addon1" required/>
                           </div>
                       </div>
                       <div class="card-footer text-muted">
                       <div class="d-grid gap-2">
-                        <button class="btn btn-primary" type="button" onClick={() => this.registrarse()}>Registrarse</button>
+                        <button class="btn btn-primary" type="button"  onClick={() => this.registrarse()}>Registrarse</button>
                       </div>
                       </div>
                     </div>
                   </div>
                 </section>
             </header>
-
-
-
-            
         );
     }
 }

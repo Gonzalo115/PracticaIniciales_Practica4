@@ -30,21 +30,12 @@ handleChange=async e=>{
 }
 
 login=async()=>{
-  var carnet = this.state.form.carnet
-  var contrasenia = this.state.form.contrasenia
-  console.log('carnet'+carnet + "  contra"+contrasenia)
-
-  if (carnet == 200 && contrasenia == "123"){
-    alert("Sesion iniciada")
-    window.location.href="./Principal";
-  }else{
-    alert("Error")
-  }
   
   /*await axios.get(baseUrl, {carnet: this.state.form.carnet,
-                            contrasenia: this.state.form.contrasenia})
+                            password: this.state.form.contrasenia})
   .then(response => {
-    alert("Sesión iniciada")
+    alert("Sesion iniciada")
+    window.location.href="./Principal";
   })
   .catch(error => {
     alert("Error")

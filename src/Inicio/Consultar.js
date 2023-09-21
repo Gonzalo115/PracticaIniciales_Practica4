@@ -3,6 +3,9 @@ import '../App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
+
+const baseUrl="http://0.0.0.0:3000/login";
 
 class Consultar extends Component {
 
@@ -26,20 +29,18 @@ class Consultar extends Component {
       get_Data=async() => {
         var carne = this.state.form.carnet
         var corre= this.state.form.correo
-        /*
-        await axios.get(baseUrl, {
+
+        await axios.post(baseUrl, {
             carnet: carne,
-            correo: correo
+            correo: corre
         })
         .then(response => {
             alert("Cuenta encontrada!")
-            window.location.href="http://localhost:3000/Restablecer";
+            window.location.href="http://localhost:3000/Restablecer/?carnet="+carne+"&"+"correo="+corre;
         })
         .catch(error => {
             alert("Error")
         })
-        */
-        window.location.href="http://localhost:3000/Restablecer";
       }
 
 

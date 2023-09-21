@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
+
+const baseUrl="http://0.0.0.0:3000/login";
 
 class Restablecer extends Component {
 
@@ -20,17 +22,23 @@ class Restablecer extends Component {
     });
   }
 
-  cambiar_Pass = async() => {
-    var contrasenia = this.state.form.contrasenia
+  cambiar_Pass = async(e) => {
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const carne = urlParams.get("carnet")
 
+    await axios.post(baseUrl, {carnet: carne,
+                            password: this.state.form.contrasenia})
+    .then(response => {
+      alert("Contraseña reestrablecida")
+      window.location.href="/";
+    })
+    .catch(error => {
+      console.log(error);
+    })
   }
 
     render() {
-
-        const reestrablecer=() => {
-          this.cambiar_Pass()
-        }
 
         return (
               <header>
@@ -58,7 +66,7 @@ class Restablecer extends Component {
                   </div>
                   <div class="card-footer text-muted">
                   <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button" onClick={reestrablecer}>Restablecer</button>
+                    <button class="btn btn-primary" type="button" onClick={() => this.cambiar_Pass()}>Restablecer</button>
                   </div>
                   </div>
                 </div>
