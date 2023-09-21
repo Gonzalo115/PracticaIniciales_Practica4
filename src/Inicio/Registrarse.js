@@ -3,7 +3,7 @@ import '../App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-const baseUrl = "http://0.0.0.0:8000/registro";
+const baseUrl = "http://localhost:3001/registro";
 const cookies = new Cookies();
 
 
