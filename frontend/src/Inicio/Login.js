@@ -73,6 +73,12 @@ class Login extends Component {
             <div class="container">
             <div className="App">
             </div>
+            <div class="App">
+              <img src="https://0701.static.prezi.com/preview/v2/ugvgy4gn4ii6paau47ytvfmqah6jc3sachvcdoaizecfr3dnitcq_3_0.png" alt="USAC"></img>
+            </div>
+            <p></p>
+            <p></p>
+            <p></p>
             <div class="card text-center">
               <div class="card-header">
                 Inicio De Sesion

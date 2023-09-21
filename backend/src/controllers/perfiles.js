@@ -11,14 +11,12 @@ exports.perfiles = async (req, res) => {
 
         //consultar si existen los datos en la tabla Usuario por medio de carnet y password
         const { carnet } = req.body;
-        console.log(carnet);
 
         const [rows] = await db.querywithoutclose(connection, `SELECT * FROM BDPR4.USUARIO WHERE carnet = ?`, [carnet]);        
         
         if (rows != null) {
 
             if (rows.carnet == carnet) {
-                console.log(rows);
                 res.status(200).json({
                     return: rows, // Los resultados de la consulta
                 });
