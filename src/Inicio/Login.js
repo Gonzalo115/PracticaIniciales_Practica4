@@ -29,30 +29,34 @@ handleChange=async e=>{
     });
 }
 
+login=async()=>{
+  var carnet = this.state.form.carnet
+  var contrasenia = this.state.form.contrasenia
+  console.log('carnet'+carnet + "  contra"+contrasenia)
 
-      /*
-      state={
-        form:{
-            carnet: '',
-            contrasenia: ''
-        }
-      }
-      handleChange=async e=>{
-        await this.setState({
-            form:{
-                ...this.state.form,
-                [e.target.name]: e.target.value
-            }
-        });
-      }
-      */
+  if (carnet == 200 && contrasenia == "123"){
+    alert("Sesion iniciada")
+    window.location.href="./Principal";
+  }else{
+    alert("Error")
+  }
+  
+  /*await axios.get(baseUrl, {carnet: this.state.form.carnet,
+                            contrasenia: this.state.form.contrasenia})
+  .then(response => {
+    alert("Sesión iniciada")
+  })
+  .catch(error => {
+    alert("Error")
+  })*/
+}
 
     render() {
 
 
 
         const iniciarSesion = ()=>{
-            window.location.href="./Principal";
+          this.login()
         }
 
         const registro=async()=>{
@@ -76,8 +80,8 @@ handleChange=async e=>{
                   <div className="input-group mb-3">
                     <span className="input-group-text" id="basic-addon1">Carnet: </span>
                     <input type="number" 
-                     //name="carnet"
-                      //onChange={this.handleChange}
+                     name="carnet"
+                     onChange={this.handleChange}
                     className="form-control" placeholder="Ingresar Carnet" aria-label="Username" aria-describedby="basic-addon1"/>
                   </div>
                     
@@ -85,8 +89,8 @@ handleChange=async e=>{
                   <div className="input-group mb-3">
                     <span className="input-group-text" id="basic-addon1">Contraseña:  </span>
                     <input type="password" 
-                    //name="comtrasena"
-                    //onChange={this.handleChange}
+                    name="contrasenia"
+                    onChange={this.handleChange}
                     className="form-control" placeholder="Ingrese La Contraseña" aria-label="Username" aria-describedby="basic-addon1"/>
                   </div>
               </div>

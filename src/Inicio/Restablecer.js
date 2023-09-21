@@ -5,6 +5,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Restablecer extends Component {
 
+  state={
+    form:{
+        carnet: '',
+        correo: ''
+    }
+  }
+
+  handleChange=async e=>{
+    await this.setState({
+        form:{
+            ...this.state.form,
+            [e.target.name]: e.target.value
+        }
+    });
+  }
+
     render() {
 
 
@@ -12,7 +28,7 @@ class Restablecer extends Component {
               <header>
               <section>
                   <div className='cote'>
-                      <a href='./'>Canelar</a>
+                      <a href='./'>Cancelar</a>
                   </div>
               </section>
               <section>

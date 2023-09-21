@@ -30,8 +30,6 @@ class Registrarse extends Component {
 
 
   registrarse = async () => {
-    console.log(this.state.form.correo)
-    console.log("asdf")
     await axios.post(baseUrl, { correo: this.state.form.correo, 
                                 carnet: this.state.form.carnet,
                                 nombre: this.state.form.nombre,
