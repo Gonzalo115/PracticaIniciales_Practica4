@@ -5,7 +5,8 @@ import { useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
-const baseUrl="http://0.0.0.0:3000/login";
+const baseUrl = "http://localhost:3001/confirmar";
+
 
 class Consultar extends Component {
 
@@ -35,14 +36,19 @@ class Consultar extends Component {
             correo: corre
         })
         .then(response => {
-            alert("Cuenta encontrada!")
-            window.location.href="http://localhost:3000/Restablecer/?carnet="+carne+"&"+"correo="+corre;
+
+            if (response.data.body.res == true) {
+                alert("Cuenta encontrada!")
+                window.location.href="http://localhost:3000/Restablecer/?carnet="+carne+"&"+"correo="+corre;
+              } else {
+                alert('Datos incorrectos');
+              }
         })
         .catch(error => {
             alert("Error")
         })
       }
-
+               
 
     
 

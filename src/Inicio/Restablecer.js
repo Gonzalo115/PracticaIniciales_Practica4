@@ -3,7 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
-const baseUrl="http://0.0.0.0:3000/login";
+const baseUrl = "http://localhost:3001/restablecer";
+
 
 class Restablecer extends Component {
 

@@ -6,41 +6,51 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 
-
-const baseUrl="http://0.0.0.0:3000/login";
-const baseUrl2="http://0.0.0.0:3000/login";
-const cookies = new Cookies();
+const baseUrl = "http://localhost:3001/login";
 
 
 class Login extends Component {
-  state={
-    form:{
-        carnet: '',
-        contrasenia: ''
+  state = {
+    form: {
+      carnet: '',
+      contrasenia: ''
     }
-}
+  }
 
-handleChange=async e=>{
+  handleChange = async e => {
     await this.setState({
-        form:{
-            ...this.state.form,
-            [e.target.name]: e.target.value
-        }
+      form: {
+        ...this.state.form,
+        [e.target.name]: e.target.value
+      }
     });
-}
+  }
 
-login=async()=>{
-  
-  /*await axios.get(baseUrl, {carnet: this.state.form.carnet,
-                            password: this.state.form.contrasenia})
-  .then(response => {
-    alert("Sesion iniciada")
-    window.location.href="./Principal";
-  })
-  .catch(error => {
-    alert("Error")
-  })*/
-}
+  login = async () => {
+    try {
+              
+      //enviar al backend por axios al backend
+      await axios.post(baseUrl, {
+        carnet: this.state.form.carnet,
+        password: this.state.form.contrasenia
+      })
+        .then(response => {
+          if (response.data.body.res == true) {
+            alert(`Bienvenido !`);
+            window.location.href = "./Principal";
+          } else {
+            alert('No se ha podido iniciar sesion');
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        })
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
     render() {
 
