@@ -18,8 +18,20 @@ class Registrarse extends Component {
     }
   }
 
+  handleChange = async e => {
+    await this.setState({
+      form: {
+        ...this.state.form,
+        [e.target.name]: e.target.value
+      }
+    });
+  }
+
+
 
   registrarse = async () => {
+    console.log(this.state.form.correo)
+    console.log("asdf")
     await axios.post(baseUrl, { correo: this.state.form.correo, 
                                 carnet: this.state.form.carnet,
                                 nombre: this.state.form.nombre,

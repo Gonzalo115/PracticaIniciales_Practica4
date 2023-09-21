@@ -13,7 +13,21 @@ const cookies = new Cookies();
 
 
 class Login extends Component {
+  state={
+    form:{
+        carnet: '',
+        contrasenia: ''
+    }
+}
 
+handleChange=async e=>{
+    await this.setState({
+        form:{
+            ...this.state.form,
+            [e.target.name]: e.target.value
+        }
+    });
+}
 
 
       /*
@@ -31,8 +45,6 @@ class Login extends Component {
             }
         });
       }
-
-
       */
 
     render() {
